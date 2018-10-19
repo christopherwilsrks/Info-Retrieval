@@ -1,0 +1,7 @@
+project.config.json
+.idea
+*.iml
+out
+gen
+test
+target
