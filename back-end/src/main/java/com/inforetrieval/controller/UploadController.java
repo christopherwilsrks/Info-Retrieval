@@ -88,7 +88,7 @@ public class UploadController {
         HttpSession session   = request.getSession();
         String      sessionId = session.getId();
 
-        String dir  = "/home/tmp/download/Readme.zip";
+        String dir  = "/home/tmp/download/README.zip";
         File   file = new File(dir);
 
 //        CompactAlgorithm compactAlgorithm = new CompactAlgorithm(new File("C:/tmp/download/Readme.zip"));
@@ -103,7 +103,7 @@ public class UploadController {
 //                } else {
 //                    fileName = URLDecoder.decode(fileName + ".xls");//其他浏览器
 //                     	}
-                response.setHeader("Content-disposition", "attachment; filename=" + new String("SHK-MOV.zip".getBytes("utf-8"), "ISO8859-1")); // 指定下载的文件名
+                response.setHeader("Content-disposition", "attachment; filename=" + new String("README.zip".getBytes("utf-8"), "ISO8859-1")); // 指定下载的文件名
                 os.write(FileUtils.readFileToByteArray(file));
                 os.flush();
             } catch (IOException e) {
@@ -138,7 +138,7 @@ public class UploadController {
 //                } else {
 //                    fileName = URLDecoder.decode(fileName + ".xls");//其他浏览器
 //                     	}
-                response.setHeader("Content-disposition", "attachment; filename=" + new String("index_info.zip".getBytes("utf-8"), "ISO8859-1")); // 指定下载的文件名
+                response.setHeader("Content-disposition", "attachment; filename=" + new String("INDEX_INFO.zip".getBytes("utf-8"), "ISO8859-1")); // 指定下载的文件名
                 os.write(FileUtils.readFileToByteArray(file));
                 os.flush();
             } catch (IOException e) {

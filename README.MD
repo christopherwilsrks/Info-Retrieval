@@ -3,17 +3,20 @@
 
 算法、后端Java实现，前端使用vue框架。前往网站 [Info Retrieval](https://www.inforetrieval.xyz)
 
-以下是工程以及网站使用简介，详细算法请阅读报告
+以下是工程以及网站使用简介，详细算法请阅读[报告](https://www.inforetrieval.xyz/api/files/download)
 
 ## 目录
 - [网站使用](#网站使用)
 - [建立索引](#建立索引)
 - [查询](#查询)
+- [参考](#参考)
 
 ---
 
 ## 网站使用
-[InfoRetrieval](https://www.inforetrieval.xyz) 使用vue-cli为前端框架，nginx做负载均衡和代理，SpringMVC为后端框架；分词实现未使用nlp包，具体分词算法请至报告。
+[InfoRetrieval](https://www.inforetrieval.xyz) 使用vue-cli为前端框架，nginx做负载均衡和代理，SpringMVC为后端框架；分词实现未使用nlp包，具体分词算法请至[报告](https://www.inforetrieval.xyz/api/files/download)。
+
+> **！注意**，因时间关系，网站暂有业务逻辑未处理，使用时请谨慎。
 
 ### 1. 网站首页
 ![首页](img/首页.png)
@@ -67,5 +70,9 @@
 模糊查询根据k-gram索引，除了加入*的指定模糊查询，当普通查询无结果时也将调用模糊查询返回相似结果
 
 ---
+## 参考
 
-若有进一步疑问，请至报告
+感谢jindongwang的基本[说明](https://github.com/jindongwang/informationretrieval/blob/master/README.md)
+
+若有进一步疑问，请至[报告](https://www.inforetrieval.xyz/api/files/download)
+
