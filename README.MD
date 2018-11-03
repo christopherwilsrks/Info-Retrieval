@@ -5,6 +5,8 @@
 
 以下是工程以及网站使用简介，详细算法请阅读[报告](https://www.inforetrieval.xyz/api/files/download)
 
+> update：因组件bug，前端部份取消了上传以及建立索引的步骤，直接搜索即可
+
 ## 目录
 - [网站使用](#网站使用)
 - [建立索引](#建立索引)
