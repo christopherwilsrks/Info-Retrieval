@@ -40,7 +40,8 @@ public class Documents {
     public Documents(String path) throws IOException {
         mapDoc = new TreeMap<Integer, String>();
         this.path = path;
-        this.pathBin = path + "/bin";
+        this.pathBin = "/home/Bool/bin";
+//        this.pathBin = "C:/bin";
     }
 
     public int processDocID() throws IOException {

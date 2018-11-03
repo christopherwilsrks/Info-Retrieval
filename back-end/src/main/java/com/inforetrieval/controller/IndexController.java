@@ -16,12 +16,11 @@ public class IndexController {
 
     @RequestMapping(value = "/indexing", produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String indexing(HttpServletRequest request) throws IOException {
+    public String indexing() throws IOException {
 
-        HttpSession session   = request.getSession();
-        String      sessionId = session.getId();
+        Documents doc = new Documents("/home/Bool/tmp");
 
-        Documents doc = new Documents("/home/tmp/" + sessionId);
+//        Documents doc = new Documents("C:/tmp/");
 
         int processDocID = doc.processDocID();
         if (processDocID != 1) {
@@ -34,17 +33,6 @@ public class IndexController {
         }
 
         return "成功创建索引";
-
-    }
-
-    @RequestMapping(value = "/login")
-    @ResponseBody
-    public void doclist(HttpServletRequest request) {
-
-        HttpSession session   = request.getSession();
-        String      sessionId = session.getId();
-
-        System.out.println(sessionId);
 
     }
 

@@ -18,16 +18,17 @@ public class Search {
     private Map<Integer, String>           mapDoc;
     private List<InversedList>             inversedLists;
     private String                         pathBin;
-    private List<Integer>                  tokeninDocCount;
+    private TreeMap<String, List<Integer>> mapTokeninDocCount;
     private Map<String, ArrayList<String>> mapK_gram;
 
     public Search(String word, String path) throws IOException {
         inversedLists = new ArrayList<InversedList>();
         docIDs = new ArrayList<Integer>();
         mapDoc = new TreeMap<Integer, String>();
-        tokeninDocCount = new ArrayList<Integer>();
         mapK_gram = new TreeMap<String, ArrayList<String>>();
-        this.pathBin = path + "/bin";
+        mapTokeninDocCount = new TreeMap<>();
+        this.pathBin = "/home/Bool/bin";
+//        this.pathBin = "C:/bin";
         this.word = word.toLowerCase();
         System.out.println("【stage 0】".toUpperCase());
         this.getDocMapping();
@@ -53,7 +54,7 @@ public class Search {
             List<TokenInfo> tokenInfos = new ArrayList<TokenInfo>();
             for (int id : tokeninDocs) {
 
-                tokenInfos.add(new TokenInfo(mapDoc.get(id), tokeninDocCount.get(i++)));
+                tokenInfos.add(new TokenInfo(mapDoc.get(id), mapTokeninDocCount.get(word).get(i++)));
 
             }
 
@@ -99,7 +100,7 @@ public class Search {
             int             i          = 0;
             List<TokenInfo> tokenInfos = new ArrayList<TokenInfo>();
             for (int id : tokeninDocs) {
-                tokenInfos.add(new TokenInfo(mapDoc.get(id), tokeninDocCount.get(i++)));
+                tokenInfos.add(new TokenInfo(mapDoc.get(id), mapTokeninDocCount.get(word).get(i++)));
             }
             docLists.add(new DocList(word, tokenInfos));
 
@@ -183,10 +184,11 @@ public class Search {
             }
 
             String[] str = _strLine.split(" ");
+            ArrayList<Integer> tokeninDocCount = new ArrayList<>();
             for (int i = 3; i < str.length; i++) {
                 tokeninDocCount.add(Integer.valueOf(str[i]));
             }
-
+            mapTokeninDocCount.put(str[0], tokeninDocCount);
             _br.close();
             _fr.close();
             return pos;
@@ -233,6 +235,7 @@ public class Search {
 
         String str[] = strLine.trim().split(" ");
 
+        docIDs.clear();
         for (int i = 1; i < str.length; i++) {
 
             docIDs.add(Integer.valueOf(str[i]));

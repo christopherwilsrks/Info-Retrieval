@@ -20,19 +20,18 @@ public class SearchController {
 
     @RequestMapping(value = "/search")
     @ResponseBody
-    public List<DocList> search(String word, HttpServletRequest request) throws IOException {
+    public List<DocList> search(String word) {
 
-        HttpSession session   = request.getSession();
-        String      sessionId = session.getId();
-        String      path   = "/home/tmp/" + sessionId;
+        String path = "/home/Bool/tmp/";
+
+//        String path = "C:/tmp";
 
         try {
-            Search search = new Search(word, path);
+            Search        search = new Search(word, path);
             List<DocList> docLists;
             if (word.contains("*")) {
                 docLists = search.k_gram_search();
-            }
-            else {
+            } else {
                 docLists = search.searchProcess();
             }
             return docLists;

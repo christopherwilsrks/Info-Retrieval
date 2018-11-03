@@ -19,9 +19,9 @@ import java.util.List;
 @Controller
 @CrossOrigin(value = "*", maxAge = 3600)
 @RequestMapping("/files")
-public class UploadController {
+public class FilesController {
 
-    @RequestMapping(value = "/list")
+    /*@RequestMapping(value = "/list")
     @ResponseBody
     public List<FileList> list(HttpServletRequest request) {
 
@@ -80,15 +80,12 @@ public class UploadController {
 
         }
         return "You successfully uploaded file";
-    }
+    }*/
 
     @RequestMapping(value = "/download")
-    public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void download(HttpServletResponse response) throws IOException {
 
-        HttpSession session   = request.getSession();
-        String      sessionId = session.getId();
-
-        String dir  = "/home/tmp/download/README.zip";
+        String dir  = "/home/Bool/download/README.zip";
         File   file = new File(dir);
 
 //        CompactAlgorithm compactAlgorithm = new CompactAlgorithm(new File("C:/tmp/download/Readme.zip"));
@@ -118,16 +115,10 @@ public class UploadController {
 
     @RequestMapping(value = "/downloadindex")
     @ResponseBody
-    public void downloadindex(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void downloadindex(HttpServletResponse response) throws IOException {
 
-        HttpSession session   = request.getSession();
-        String      sessionId = session.getId();
-
-        String dir = "/home/tmp/download/" + sessionId + ".zip";
+        String dir = "/home/Bool/download/INDEX.zip";
         File   file = new File(dir);
-
-        CompactAlgorithm compactAlgorithm = new CompactAlgorithm(file);
-        compactAlgorithm.zipFiles(new File("/home/tmp/" + sessionId + "/bin"));
 
         if (file.exists()) {
             OutputStream os = new BufferedOutputStream(response.getOutputStream());
@@ -152,7 +143,19 @@ public class UploadController {
 
     }
 
-    @RequestMapping(value = "/remove")
+    @RequestMapping("/compact")
+    @ResponseBody
+    public void compact() {
+
+        String dir = "/home/Bool/download/INDEX.zip";
+        File   file = new File(dir);
+
+        CompactAlgorithm compactAlgorithm = new CompactAlgorithm(file);
+        compactAlgorithm.zipFiles(new File("/home/Bool/bin"));
+
+    }
+
+    /*@RequestMapping(value = "/remove")
     @ResponseBody
     public String remove(String filename, HttpServletRequest request) {
 
@@ -185,7 +188,7 @@ public class UploadController {
             }
         }
         return resultFileName;
-    }
+    }*/
 
 
 }
